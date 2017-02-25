@@ -1,1 +1,5 @@
-module.exports = {}
+import matches from './matches'
+
+module.exports = {
+  matches
+}
