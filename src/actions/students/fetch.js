@@ -1,20 +1,28 @@
 import API from '../../middleware/api'
-import loadError from '../load/error'
-import loadSuccess from '../load/success'
+import loadError from '../load/error.js'
+import loadSuccess from '../load/success.js'
 import loading from '../load/loading'
-export const USER_SIGNED_UP = 'USER_SIGNED_UP'
+
+export const FETCHED_STUDENTS = 'FETCHED_STUDENTS'
 
 const api = new API()
 const users = api.service('users')
 
-export default (user) => {
+export default () => {
   return (dispatch) => {
     dispatch(loading(true))
 
-    users.create(user)
+    users.find({
+      query: {
+        $limit: 25
+      }
+    })
     .then((response) => {
       dispatch(loadSuccess())
-      dispatch({ type: USER_SIGNED_UP })
+      dispatch({
+        type: FETCHED_STUDENTS,
+        payload: response.data
+      })
     })
     .catch((error) => {
       dispatch(loadError(error))

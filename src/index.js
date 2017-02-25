@@ -10,6 +10,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 import App from './App'
+import MatchContainer from './matches/MatchContainer'
 import SignUp from './users/SignUp'
 import SignIn from './users/SignIn'
 
@@ -17,7 +18,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute />
+        <IndexRoute component={MatchContainer} />
         <Route path="/sign-up" component={SignUp} />
         <Route path="/sign-in" component={SignIn} />
       </Route>
