@@ -26,6 +26,7 @@ const signInUp = {
 export class SignIn extends PureComponent {
 
   submitForm(event) {
+    event.preventDefault()
     const user = {
       email: this.refs.email.getValue(),
       password: this.refs.password.getValue()

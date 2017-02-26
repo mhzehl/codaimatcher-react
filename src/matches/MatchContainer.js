@@ -1,8 +1,12 @@
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Title from '../components/Title'
+import Match from './Match'
+import UnpickedStudents from '../admin/UnpickedStudents'
+import PreviousMatches from './PreviousMatches'
 import fetchMatches from '../actions/matches/fetch'
 import fetchStudents from '../actions/students/fetch'
+import fetchClassDay from '../actions/classday/fetch'
 import './MatchContainer.sass'
 
 class MatchContainer extends PureComponent {
@@ -12,17 +16,21 @@ class MatchContainer extends PureComponent {
   }
 
   componentDidMount() {
-    this.props.fetchMatches()
-    this.props.fetchStudents()
+    this.props.fetchClassDay(this.props.currentUser)
   }
 
   render() {
+
+    const { currentUser } = this.props
 
     return(
 
       <div className="matches wrapper">
         <header>
           <Title content="Match of the Day" />
+          <Match />
+          <PreviousMatches />
+          <UnpickedStudents />
         </header>
       </div>
     )
@@ -35,4 +43,4 @@ const mapStatetoProps = ({ currentUser, matches, students }) => ({
   students
 })
 
-export default connect(mapStatetoProps, { fetchMatches, fetchStudents })(MatchContainer)
+export default connect(mapStatetoProps, { fetchClassDay })(MatchContainer)
