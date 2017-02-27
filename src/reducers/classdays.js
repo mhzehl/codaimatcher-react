@@ -1,8 +1,8 @@
-import { FETCHED_MATCHES } from '../actions/matches/fetch'
+import { FETCHED_CLASSDAY } from '../actions/classday/fetch'
 
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
-    case FETCHED_MATCHES :
+    case FETCHED_CLASSDAY :
       return [].concat(payload)
 
     default :
