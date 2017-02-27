@@ -7,12 +7,11 @@ class Student extends PureComponent {
   render() {
 
     const { currentUser } = this.props
-    console.log('student: ', this.props)
 
     return(
       <div className='student'>
-        <Avatar src="#" size={200} />
-        <h2>Hello</h2>
+        <Avatar src="http://res.cloudinary.com/dyl4vtost/image/upload/v1487858487/Melvin_1_copy_fpel1a.jpg" size={200} />
+        <h2>{ currentUser.name }</h2>
       </div>
     )
   }
